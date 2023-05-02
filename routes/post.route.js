@@ -67,7 +67,7 @@ postRouter.delete('/api/posts/:id', async (req, res) => {
 })
 
 
-// lokes
+// likes
 
 postRouter.post('/api/posts/:id/like', async (req, res) => {
     let payload = req.body;
@@ -94,4 +94,6 @@ postRouter.post('/api/posts/:id/comment', async (req, res) => {
         console.log(error);
     }
 });
+
+module.exports={postRouter}
 

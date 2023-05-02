@@ -1,6 +1,7 @@
 const express = require('express');
 const { connection } = require('mongoose');
 const { userRouter } = require('./routes/user.route');
+const { postRouter } = require('./routes/post.route');
 require('dotenv').config();
 
 const app = express();
@@ -12,6 +13,7 @@ app.get('/',  (req, res)=> {
 });
 
 app.use('/user', userRouter);
+app.use('post', postRouter);
 app.listen(process.env.port, async() => {
     try {
         await connection;
