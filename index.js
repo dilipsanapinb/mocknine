@@ -13,8 +13,9 @@ app.get('/',  (req, res)=> {
     res.send('Welcome to Social Media Application')
 });
 
-app.use(auth)
+
 app.use('/user', userRouter);
+app.use(auth)
 app.use('/post', postRouter);
 app.listen(process.env.port, async() => {
     try {
