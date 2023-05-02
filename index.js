@@ -2,6 +2,7 @@ const express = require('express');
 const { connection } = require('mongoose');
 const { userRouter } = require('./routes/user.route');
 const { postRouter } = require('./routes/post.route');
+const { auth } = require('./middlewares/auth');
 require('dotenv').config();
 
 const app = express();
@@ -12,8 +13,9 @@ app.get('/',  (req, res)=> {
     res.send('Welcome to Social Media Application')
 });
 
+app.use(auth)
 app.use('/user', userRouter);
-app.use('post', postRouter);
+app.use('/post', postRouter);
 app.listen(process.env.port, async() => {
     try {
         await connection;
